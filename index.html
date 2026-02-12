@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Photobooth | CRT Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="booth-container">
+        <!-- Main Booth Monitor -->
+        <div class="booth-monitor">
+            <div class="monitor-inner">
+                <!-- Webcam Container -->
+                <div class="webcam-wrapper">
+                    <video id="webcam" autoplay playsinline></video>
+                    
+                    <!-- CRT Effects Layer -->
+                    <div class="crt-overlay"></div>
+                    <div class="grain-overlay"></div>
+                    
+                    <!-- Flash Overlay -->
+                    <div id="flash" class="flash-overlay"></div>
+
+                    <!-- Countdown Display -->
+                    <div id="countdown" class="countdown-display"></div>
+                </div>
+
+                <!-- Booth Branding/Status -->
+                <div class="monitor-frame-bottom">
+                    <div class="brand">MEMO-MATIC 3000</div>
+                    <div id="status" class="status-indicator">READY</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="start-btn" class="retro-button">CAPTURE STRIP</button>
+            <button id="retake-btn" class="retro-button hidden">RETAKE</button>
+        </div>
+
+        <!-- Developing Area (The Strip) -->
+        <div id="developing-area" class="developing-area hidden">
+            <div class="strip-container">
+                <div id="photo-strip" class="photo-strip">
+                    <!-- Captured frames will be added here -->
+                </div>
+                <div class="developing-text">DEVELOPING...</div>
+            </div>
+        </div>
+
+        <!-- Final Export Modal/Preview -->
+        <div id="result-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>YOUR PHOTO STRIP</h2>
+                <div id="final-preview"></div>
+                <div class="modal-actions">
+                    <a id="download-link" class="retro-button">DOWNLOAD</a>
+                    <button id="close-modal" class="retro-button secondary">NEW SESSION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Canvas for stitching -->
+    <canvas id="capture-canvas" width="640" height="480" class="hidden"></canvas>
+    <canvas id="strip-canvas" class="hidden"></canvas>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
